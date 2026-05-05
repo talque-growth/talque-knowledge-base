@@ -1,0 +1,72 @@
+# robots.txt für talque Hilfe-Center
+# Auf den Server in das Root-Verzeichnis der Hosting-Domain legen
+# (z.B. https://help.talque.de/robots.txt)
+
+# ── Standard Search Crawlers (SEO) ──
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ── AI / GEO Crawlers ──
+# Erlaubnis erteilen, damit talque-Antworten in AI-Suchen
+# (ChatGPT, Claude, Perplexity, Google AI Overviews) zitiert werden.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# ── Default für alle weiteren Bots ──
+User-agent: *
+Allow: /
+Disallow:
+
+# ── Sitemap ──
+Sitemap: https://talque.de/hilfe-center/sitemap.xml
