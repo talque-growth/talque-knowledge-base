@@ -2972,14 +2972,19 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
       document.body.appendChild(btn);
     }
     var viewportH = e.data.parentViewportHeight || 600;
-    var iframeFullyPast = (iframeTop + iframeHeight) < parentNavHeight + 80;
     var btnHeight = btn.offsetHeight || 48;
     var btnMargin = 24;
-    var rawBtnTop = offset + viewportH - btnHeight - btnMargin;
+    // Button soll am unteren Rand des sichtbaren Viewports sitzen.
+    // In iframe-Koordinaten: visible viewport bottom = -iframeTop + viewportH
+    // → btnTop = (-iframeTop + viewportH) - btnHeight - btnMargin
+    var rawBtnTop = viewportH - btnHeight - btnMargin - iframeTop;
     var maxBtnTop = Math.max(0, iframeHeight - btnHeight - btnMargin);
     var clampedBtnTop = Math.max(0, Math.min(rawBtnTop, maxBtnTop));
 
-    if (offset > 300 && !iframeFullyPast) {
+    var iframeFullyPast = (iframeTop + iframeHeight) < (parentNavHeight + btnHeight + btnMargin);
+    var iframeNotYetVisible = iframeTop > viewportH;
+
+    if (offset > 300 && !iframeFullyPast && !iframeNotYetVisible) {
       btn.style.top = clampedBtnTop + 'px';
       btn.style.display = 'inline-block';
     } else {
