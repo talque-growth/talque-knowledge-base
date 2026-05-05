@@ -1106,9 +1106,15 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 
-/* ── IFRAME-MODUS: Sticky Header deaktivieren, da Parent scrollt ── */
+/* ── IFRAME-MODUS: Sticky-Verhalten und content-visibility deaktivieren ──
+   Grund: Parent (Webflow) ist die Scroll-Instanz, nicht der iframe selbst.
+   - Sticky Header/Sidebar würden am iframe-Rand pinnen statt am Viewport
+   - content-visibility:auto verfälscht die Höhenmessung des Auto-Resize */
 .in-iframe .site-header { position: relative; }
+.in-iframe .sidebar { position: relative; top: auto; max-height: none; overflow: visible; }
+.in-iframe .chapter { content-visibility: visible; contain-intrinsic-size: auto; }
 .in-iframe { scroll-padding-top: 0; }
+.in-iframe html, .in-iframe body { overflow: visible; height: auto; }
 
 </style>
 </head>
