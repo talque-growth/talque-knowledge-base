@@ -2972,8 +2972,15 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
       document.body.appendChild(btn);
     }
     var viewportH = e.data.parentViewportHeight || 600;
-    if (offset > 300) {
-      btn.style.top = Math.max(0, offset + viewportH - 80) + 'px';
+    var iframeFullyPast = (iframeTop + iframeHeight) < parentNavHeight + 80;
+    var btnHeight = btn.offsetHeight || 48;
+    var btnMargin = 24;
+    var rawBtnTop = offset + viewportH - btnHeight - btnMargin;
+    var maxBtnTop = Math.max(0, iframeHeight - btnHeight - btnMargin);
+    var clampedBtnTop = Math.max(0, Math.min(rawBtnTop, maxBtnTop));
+
+    if (offset > 300 && !iframeFullyPast) {
+      btn.style.top = clampedBtnTop + 'px';
       btn.style.display = 'inline-block';
     } else {
       btn.style.display = 'none';
