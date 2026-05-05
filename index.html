@@ -2910,13 +2910,9 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
   document.addEventListener('input', function() { setTimeout(postHeight, 50); }, true);
 
   // Pseudo-Sticky: Parent meldet Scroll-Position, wir verschieben den Header per transform.
-  var ALLOWED_PARENT_ORIGINS = [
-    'https://talque.de',
-    'https://www.talque.de',
-    'https://talque-growth.webflow.io'
-  ];
+  // Origin-Check bewusst weggelassen — die kb ist eine öffentliche Help-Seite ohne sensitive
+  // Aktionen, daher ist es safe Messages von beliebigen Embed-Parents zu akzeptieren.
   window.addEventListener('message', function(e) {
-    if (ALLOWED_PARENT_ORIGINS.indexOf(e.origin) === -1) return;
     if (!e.data || e.data.type !== 'talque-parent-scroll') return;
     var header = document.getElementById('siteHeader');
     if (!header) return;
