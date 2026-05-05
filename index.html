@@ -1111,7 +1111,7 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
    - Sticky Header/Sidebar würden am iframe-Rand pinnen statt am Viewport
    - content-visibility:auto verfälscht die Höhenmessung des Auto-Resize */
 .in-iframe .site-header { position: relative; }
-.in-iframe .sidebar { position: relative; top: auto; max-height: none; overflow: visible; }
+.in-iframe .sidebar { position: relative; top: auto; height: auto; max-height: none; overflow: visible; padding: 24px 24px 24px 0; }
 .in-iframe .chapter { content-visibility: visible; contain-intrinsic-size: auto; }
 .in-iframe { scroll-padding-top: 0; }
 .in-iframe html, .in-iframe body { overflow: visible; height: auto; }
@@ -2908,6 +2908,42 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
   }
   document.addEventListener('click', function() { setTimeout(postHeight, 50); }, true);
   document.addEventListener('input', function() { setTimeout(postHeight, 50); }, true);
+
+  // Pseudo-Sticky: Parent meldet Scroll-Position, wir verschieben den Header per transform.
+  var ALLOWED_PARENT_ORIGINS = [
+    'https://talque.de',
+    'https://www.talque.de',
+    'https://talque-growth.webflow.io'
+  ];
+  window.addEventListener('message', function(e) {
+    if (ALLOWED_PARENT_ORIGINS.indexOf(e.origin) === -1) return;
+    if (!e.data || e.data.type !== 'talque-parent-scroll') return;
+    var header = document.getElementById('siteHeader');
+    if (!header) return;
+    var iframeTop = e.data.iframeTop || 0;
+    var parentNavHeight = e.data.parentNavHeight || 0;
+    var iframeHeight = document.documentElement.scrollHeight;
+    var headerHeight = header.offsetHeight || 60;
+    var offset = Math.max(0, parentNavHeight - iframeTop);
+    var maxOffset = Math.max(0, iframeHeight - headerHeight - 20);
+    offset = Math.min(offset, maxOffset);
+    if (offset > 0) {
+      header.style.transform = 'translateY(' + offset + 'px)';
+      header.style.zIndex = '9999';
+      header.style.background = 'rgba(255,255,255,0.95)';
+      header.style.webkitBackdropFilter = 'saturate(180%) blur(14px)';
+      header.style.backdropFilter = 'saturate(180%) blur(14px)';
+      header.style.boxShadow = '0 4px 20px rgba(74,45,99,0.08)';
+      header.style.borderBottom = '1px solid rgba(38,38,40,0.08)';
+    } else {
+      header.style.transform = '';
+      header.style.background = '';
+      header.style.webkitBackdropFilter = '';
+      header.style.backdropFilter = '';
+      header.style.boxShadow = '';
+      header.style.borderBottom = '';
+    }
+  });
 })();
 </script>
 
