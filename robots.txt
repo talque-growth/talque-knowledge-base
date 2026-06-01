@@ -69,4 +69,4 @@ Allow: /
 Disallow:
 
 # ── Sitemap ──
-Sitemap: https://talque.de/hilfe-center/sitemap.xml
+Sitemap: https://talque-knowledge-base.vercel.app/sitemap.xml
