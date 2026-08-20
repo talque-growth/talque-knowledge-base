@@ -861,6 +861,18 @@ body {
 }
 .article a:hover { border-color: var(--brand-violet); }
 
+.article a.tpl-link { border-bottom: none; }
+.article a.tpl-link code {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(126,55,197,0.45);
+  cursor: pointer;
+}
+.article a.tpl-link:hover code {
+  border-color: var(--brand-violet);
+  text-decoration-color: var(--brand-violet);
+}
+
 .article code {
   background: var(--fog);
   padding: 2px 6px;
@@ -1663,7 +1675,7 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
       <article class="article" id="session-grosses-event">
         <h3>Sessions anlegen — großes Event</h3>
         <p>Für größere Events empfehlen wir, mit der Planung der Eventstruktur zu beginnen — einschließlich Räume, Formate und weitere Sessionfilter. Erstelle zuerst die nötigen Räume und Filter, dann kannst du diese vorhandenen Informationen direkt beim Anlegen einer Session einbeziehen.</p>
-        <p>Anschließend lade die Sessions als Datendatei hoch, z.B. mit unserer Excel-Sessionvorlage. Lade die Daten erst hoch, wenn alle Informationen vollständig sind. Teste die Upload-Funktion vorher mit einer kleinen Anzahl von Speakern und Sessions.</p>
+        <p>Anschließend lade die Sessions als Datendatei hoch, z.B. mit unserer <a href="Templates/Template_example_lectures.xlsx" download>Excel-Sessionvorlage</a>. Lade die Daten erst hoch, wenn alle Informationen vollständig sind. Teste die Upload-Funktion vorher mit einer kleinen Anzahl von Speakern und Sessions.</p>
         <div class="callout warning">
           <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div class="callout-content">
@@ -2129,7 +2141,7 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
         </div>
 
         <h4>Speaker-Daten als Datei hochladen</h4>
-        <p>Um die Speaker-Liste als Datendatei (Excel oder .csv) hochzuladen, beginne mit unserer .xlsx-Vorlage oder .csv-Vorlage und füge deine Daten ein. Lade sie dann unter <span class="path">Admin &gt; Speakers &gt; [Upload CSV]</span> hoch — sowohl .xlsx- als auch .csv-Dateien werden akzeptiert.</p>
+        <p>Um die Speaker-Liste als Datendatei (Excel oder .csv) hochzuladen, beginne mit unserer <a href="Templates/Template_example_speakers.xlsx" download>.xlsx-Vorlage</a> oder .csv-Vorlage und füge deine Daten ein. Lade sie dann unter <span class="path">Admin &gt; Speakers &gt; [Upload CSV]</span> hoch — sowohl .xlsx- als auch .csv-Dateien werden akzeptiert.</p>
       </article>
 
       <article class="article" id="referenten-profil">
@@ -2409,7 +2421,7 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
         </ul>
 
         <h4>Teilnehmer zur Einladungsliste hinzufügen</h4>
-        <p>Du kannst Teilnehmerdaten manuell über <span class="kbd">+ Add</span> eingeben oder per Datei hochladen mit <span class="kbd">Upload CSV</span>. Akzeptiert werden Excel .xlsx- und .csv-Dateien. Bitte starte mit unserer .xlsx-Vorlage oder .csv-Vorlage.</p>
+        <p>Du kannst Teilnehmerdaten manuell über <span class="kbd">+ Add</span> eingeben oder per Datei hochladen mit <span class="kbd">Upload CSV</span>. Akzeptiert werden Excel .xlsx- und .csv-Dateien. Bitte starte mit unserer <a href="Templates/Template_example_invitations.xlsx" download>.xlsx-Vorlage</a> oder .csv-Vorlage.</p>
         <div class="callout tip">
           <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           <div class="callout-content">
@@ -2497,10 +2509,10 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
 
         <h4>Verfügbare Vorlagen</h4>
         <ul>
-          <li><code>example_speakers.xlsx</code> / <code>example_speakers.csv</code> — für den Upload von Referent:innen</li>
-          <li><code>example_lectures.xlsx</code> / <code>example_lectures.csv</code> — für den Upload von Sessions und Vorträgen</li>
-          <li><code>example_partners.xlsx</code> / <code>example_partners.csv</code> — für den Upload von Partnern und Ausstellern</li>
-          <li><code>example_invitations.xlsx</code> / <code>example_invitations.csv</code> — für den Upload von Einladungen</li>
+          <li><a class="tpl-link" href="Templates/Template_example_speakers.xlsx" download><code>Template_example_speakers.xlsx</code></a> / <code>Template_example_speakers.csv</code> — für den Upload von Referent:innen</li>
+          <li><a class="tpl-link" href="Templates/Template_example_lectures.xlsx" download><code>Template_example_lectures.xlsx</code></a> / <code>Template_example_lectures.csv</code> — für den Upload von Sessions und Vorträgen</li>
+          <li><a class="tpl-link" href="Templates/Template_example_partners.xlsx" download><code>Template_example_partners.xlsx</code></a> / <code>Template_example_partners.csv</code> — für den Upload von Partnern und Ausstellern</li>
+          <li><a class="tpl-link" href="Templates/Template_example_invitations.xlsx" download><code>Template_example_invitations.xlsx</code></a> / <code>Template_example_invitations.csv</code> — für den Upload von Einladungen</li>
         </ul>
 
         <div class="callout tip">
@@ -2741,10 +2753,10 @@ mark.search-hit { background: linear-gradient(120deg, #f7d8ff 0%, #e9b8ff 100%);
         <h3>Excel-Vorlagen</h3>
         <p>Klicke auf einen Dateinamen, um die Vorlage herunterzuladen.</p>
         <ul>
-          <li><a href="Templates/example_invitations_correct.xlsx" download>example_invitations_correct.xlsx</a></li>
-          <li><a href="Templates/example_lectures.xlsx" download>example_lectures.xlsx</a></li>
-          <li><a href="Templates/example_partners_correct.xlsx" download>example_partners_correct.xlsx</a></li>
-          <li><a href="Templates/example_speakers.xlsx" download>example_speakers.xlsx</a></li>
+          <li><a href="Templates/Template_example_invitations.xlsx" download>Template_example_invitations.xlsx</a></li>
+          <li><a href="Templates/Template_example_lectures.xlsx" download>Template_example_lectures.xlsx</a></li>
+          <li><a href="Templates/Template_example_partners.xlsx" download>Template_example_partners.xlsx</a></li>
+          <li><a href="Templates/Template_example_speakers.xlsx" download>Template_example_speakers.xlsx</a></li>
         </ul>
       </article>
     </section>
